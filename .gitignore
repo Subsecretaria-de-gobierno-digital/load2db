@@ -1,0 +1,13 @@
+# Excepto los archivos Python (.py) en la raíz de los directorios especificados
+!loadDatatoDB_gen/*.py
+!loadDatatoDB_specific/*.py
+
+# Ignorar específicamente estas subcarpetas y archivos innecesarios
+loadDatatoDB_gen/__pycache__/
+loadDatatoDB_gen/libretas/
+loadDatatoDB_gen/subidas/
+loadDatatoDB_gen/uploaded/
+
+loadDatatoDB_specific/__pycache__/
+loadDatatoDB_specific/dist/
+loadDatatoDB_specific/subidas/
