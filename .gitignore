@@ -11,3 +11,6 @@ loadDatatoDB_gen/uploaded/
 loadDatatoDB_specific/__pycache__/
 loadDatatoDB_specific/dist/
 loadDatatoDB_specific/subidas/
+
+__pycache__/
+*.pyc
