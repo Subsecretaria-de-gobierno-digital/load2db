@@ -1,62 +1,78 @@
-load2db
+# load2db
+
+## Descripción General
 
 Este repositorio contiene dos scripts de Python para cargar datos desde archivos Excel a bases de datos PostgreSQL:
-1. loadDatatoDB_gen.py
-Características
 
-Carga datos generales con una columna adicional data_origin
-Normaliza archivos Excel
-Agrega un valor de origen de datos configurable
+### 1. `loadDatatoDB_gen.py`
 
-Uso
-bashCopypython loadDatatoDB_gen.py <archivo_excel> <host> <nombre_bd> <usuario> <contraseña> <nombre_tabla> [--data_origin VALOR_ORIGEN]
-Ejemplo
-bashCopypython loadDatatoDB_gen.py datos.xlsx localhost mibasedatos miusuario miclave mitabla --data_origin "archivo_enero"
-2. loadDatatoDB_specific.py
-Características
+#### Características
+- Carga datos generales con una columna adicional `data_origin`
+- Normaliza archivos Excel
+- Agrega un valor de origen de datos configurable
 
-Carga datos con procesamiento específico
-Incluye año de entrada como parámetro
-Verifica existencia del archivo de entrada
-Normaliza y procesa datos antes de cargar
+#### Uso
+```bash
+python loadDatatoDB_gen.py <archivo_excel> <host> <nombre_bd> <usuario> <contraseña> <nombre_tabla> [--data_origin VALOR_ORIGEN]
+```
 
-Uso
-bashCopypython loadDatatoDB_specific.py <archivo_excel> <nombre_bd> <host> <usuario> <contraseña> <nombre_tabla> <año>
-Ejemplo
-bashCopypython loadDatatoDB_specific.py datos2023.xlsx mibasedatos localhost miusuario miclave mitabla 2023
-Dependencias
-Dependencias Principales
+##### Ejemplo
+```bash
+python loadDatatoDB_gen.py datos.xlsx localhost mibasedatos miusuario miclave mitabla --data_origin "archivo_enero"
+```
 
-datetime: Manejo de fechas y tiempos
-argparse: Procesamiento de argumentos de línea de comandos
-os: Verificación de archivos
+### 2. `loadDatatoDB_specific.py`
 
-Dependencias Específicas del Proyecto
+#### Características
+- Carga datos con procesamiento específico
+- Incluye año de entrada como parámetro
+- Verifica existencia del archivo de entrada
+- Normaliza y procesa datos antes de cargar
 
-load_gen o loadv3: Módulo de carga a base de datos
-normalize_gen o normalize: Módulo de normalización de datos
-process: Módulo de procesamiento de datos (solo en loadDatatoDB_specific.py)
+#### Uso
+```bash
+python loadDatatoDB_specific.py <archivo_excel> <nombre_bd> <host> <usuario> <contraseña> <nombre_tabla> <año>
+```
 
-Instalación
+##### Ejemplo
+```bash
+python loadDatatoDB_specific.py datos2023.xlsx mibasedatos localhost miusuario miclave mitabla 2023
+```
 
-Clonar el repositorio
-Instalar dependencias:
+## Dependencias
 
-bashCopypip install datetime argparse psycopg2 openpyxl
-Flujo de Trabajo
+### Dependencias Principales
+- `datetime`: Manejo de fechas y tiempos
+- `argparse`: Procesamiento de argumentos de línea de comandos
+- `os`: Verificación de archivos
 
-Normalización: Convierte el archivo Excel a un formato estandarizado
-Procesamiento (específico): Transforma los datos si es necesario
-Carga: Inserta los datos en la base de datos PostgreSQL
+### Dependencias Específicas del Proyecto
+- `load_gen` o `loadv3`: Módulo de carga a base de datos
+- `normalize_gen` o `normalize`: Módulo de normalización de datos
+- `process`: Módulo de procesamiento de datos (solo en `loadDatatoDB_specific.py`)
 
-Consideraciones
+## Instalación
 
-Ambos scripts requieren credenciales de base de datos
-loadDatatoDB_gen.py es más genérico
-loadDatatoDB_specific.py permite mayor personalización
+1. Clonar el repositorio
+2. Instalar dependencias:
+```bash
+pip install datetime argparse psycopg2 openpyxl
+```
 
-Logging y Seguimiento
+## Flujo de Trabajo
 
-Muestra tiempo de ejecución
-Imprime mensajes de progreso en consola
-No genera archivos de log permanentes
+1. **Normalización**: Convierte el archivo Excel a un formato estandarizado
+2. **Procesamiento** (específico): Transforma los datos si es necesario
+3. **Carga**: Inserta los datos en la base de datos PostgreSQL
+
+## Consideraciones
+
+- Ambos scripts requieren credenciales de base de datos
+- `loadDatatoDB_gen.py` es más genérico
+- `loadDatatoDB_specific.py` permite mayor personalización
+
+## Logging y Seguimiento
+
+- Muestra tiempo de ejecución
+- Imprime mensajes de progreso en consola
+- No genera archivos de log permanentes
